@@ -6,6 +6,8 @@ Created on Sat Nov  9 12:03:45 2019
 """
 
 import cv2
+import numpy as np
+from playsound import playsound
 
 cap = cv2.VideoCapture(0)
 while True:
@@ -30,6 +32,12 @@ while True:
         if(area>300):
             x,y,w,h = cv2.boundingRect(contour)
             img = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),1)
+            if x>=25 and x+w<=175 and y>=75 and y+h<=225:
+                playsound('Splash_Cymbal_Crash_Edited.mp3')
+            elif x>=450 and x+w<=600 and y>=75 and y+h<=225:
+                playsound('Royalty_Snare_Drum_Edited.mp3')
+            elif x>=225 and x+w<=375 and y>=250 and y+h<=400:
+                playsound('Floor_Tom_Drum_Edited.mp3')
     
     cv2.imshow("Air Drum",img)
     if cv2.waitKey(10) == 27:
